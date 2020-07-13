@@ -12,6 +12,7 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Item from '../components/Item';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DatePicker from 'react-native-datepicker';
 
 const DATA = [
   {
@@ -49,7 +50,8 @@ const DATA = [
 const FirstPage = () => {
   const renderItem = ({item}) => <Item item={item} />;
   const [modalVisible, setModalVisible] = useState(false);
-  const [value, onChangeText] = React.useState('Enter Task name');
+  const [value, onChangeText] = useState('');
+  const [date, onChangeDate] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -83,6 +85,29 @@ const FirstPage = () => {
             }}
             onChangeText={text => onChangeText(text)}
             value={value}
+            placeholder={'Enter task name'}
+          />
+          <DatePicker
+            style={{width: 200}}
+            date={date}
+            mode="date"
+            placeholder="select date"
+            format="YYYY-MM-DD"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+              },
+              dateInput: {
+                marginLeft: 36,
+              },
+              // ... You can check the source to find the other keys.
+            }}
+            onDateChange={date => onChangeDate(date)}
           />
         </View>
       </Modal>
