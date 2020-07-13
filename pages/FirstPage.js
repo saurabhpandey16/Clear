@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,9 +6,12 @@ import {
   StyleSheet,
   Text,
   StatusBar,
+  Modal,
+  TextInput,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Item from '../components/Item';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const DATA = [
   {
@@ -45,6 +48,8 @@ const DATA = [
 
 const FirstPage = () => {
   const renderItem = ({item}) => <Item item={item} />;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [value, onChangeText] = React.useState('Enter Task name');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,6 +58,34 @@ const FirstPage = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      <TouchableOpacity
+        style={styles.TouchableOpacityStyle}
+        activeOpacity={0.7}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <Icon style={styles.FloatingButtonStyle} name="add" size={24} />
+      </TouchableOpacity>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.modalView}>
+          <TextInput
+            style={{
+              padding: 5,
+              height: 40,
+              borderColor: 'gray',
+              borderWidth: 1,
+            }}
+            onChangeText={text => onChangeText(text)}
+            value={value}
+          />
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -79,6 +112,35 @@ const styles = StyleSheet.create({
   assigned: {
     fontSize: 16,
     textAlign: 'right',
+  },
+  TouchableOpacityStyle: {
+    backgroundColor: 'red',
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+    margin: 20,
+  },
+  FloatingButtonStyle: {
+    textAlign: 'center',
+  },
+  modalView: {
+    margin: 20,
+    marginTop: 100,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
 

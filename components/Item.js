@@ -15,10 +15,10 @@ const Item = ({item}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [name, setUser] = useState('');
   const userArr = [
-    {name: 'James'},
-    {name: 'Jenny'},
-    {name: 'Jordam'},
-    {name: 'John'},
+    {id: 'a', name: 'James'},
+    {id: 'd', name: 'Jenny'},
+    {id: 'h', name: 'Jordam'},
+    {id: 'v', name: 'John'},
   ];
   return (
     <View key={item.id} style={styles.item}>
@@ -37,7 +37,9 @@ const Item = ({item}) => {
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {}}>
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>Select user</Text>
 
@@ -57,6 +59,7 @@ const Item = ({item}) => {
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
+                  key={item.id}
                   onPress={item => {
                     setUser({name: item.name});
                   }}>
@@ -67,16 +70,6 @@ const Item = ({item}) => {
               );
             }}
           />
-
-          {/* <Text style={styles.modalText}>Hello World!</Text>
-
-          <TouchableHighlight
-            style={{...styles.openButton, backgroundColor: '#2196F3'}}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}>
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </TouchableHighlight> */}
         </View>
       </Modal>
     </View>
