@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ClearTests.m */; };
 		037A149D34F2C401925375CF /* libPods-Clear-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D757EA038402D7D0E90DDC0 /* libPods-Clear-tvOSTests.a */; };
-		12DF55856FF209917D7C6747 /* libPods-Clear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554706E5B18FF5779C00F4EA /* libPods-Clear.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -18,6 +17,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ClearTests.m */; };
 		52B4EDABE0E937C880B1EAE3 /* libPods-Clear-ClearTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1B3F31E91DA2BA4AD20132 /* libPods-Clear-ClearTests.a */; };
+		713BFF78EAB2B4E04C7F8002 /* libPods-Clear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554706E5B18FF5779C00F4EA /* libPods-Clear.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B3446C09DFDB58B69D6EC7DF /* libPods-Clear-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508A7D5C4552ADF40F447EB3 /* libPods-Clear-tvOS.a */; };
 /* End PBXBuildFile section */
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12DF55856FF209917D7C6747 /* libPods-Clear.a in Frameworks */,
+				713BFF78EAB2B4E04C7F8002 /* libPods-Clear.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +761,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Clear/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -783,6 +784,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Clear/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

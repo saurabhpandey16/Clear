@@ -1,88 +1,89 @@
 import 'react-native-gesture-handler';
 
 import * as React from 'react';
+import {Button, View, Text, TouchableOpacity, Image} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icons from 'react-native-vector-icons/FontAwesome';
 
-import FirstPage from './pages/FirstPage';
-import SecondPage from './pages/SecondPage';
-import ThirdPage from './pages/ThirdPage';
+import HomeScreen from './pages/HomeScreen';
 
 const Stack = createStackNavigator();
-const Tab = createMaterialTopTabNavigator();
+const Tab = createBottomTabNavigator();
 
-function TabStack() {
+function HomeStack() {
   return (
-    <Tab.Navigator
-      initialRouteName="Feed"
-      tabBarOptions={{
-        activeTintColor: '#FFFFFF',
-        inactiveTintColor: '#F8F8F8',
-        style: {
-          backgroundColor: '#633689',
-        },
-        labelStyle: {
-          textAlign: 'center',
-        },
-        indicatorStyle: {
-          borderBottomColor: '#87B56A',
-          borderBottomWidth: 2,
-        },
+    <Stack.Navigator
+      initialRouteName="Monu"
+      screenOptions={{
+        headerTintColor: 'Black',
+        headerTitleStyle: {fontWeight: 'bold'},
       }}>
-      <Tab.Screen
-        name="Planned"
-        component={FirstPage}
-        options={{
-          tabBarLabel: 'Planned',
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="home" color={color} size={size} />
-          // ),
-        }}
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        color={'black'}
+        options={{title: 'Activity'}}
       />
-      <Tab.Screen
-        name="Started"
-        component={SecondPage}
-        options={{
-          tabBarLabel: 'Started',
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
-        }}
-      />
-      <Tab.Screen
-        name="Done"
-        component={ThirdPage}
-        options={{
-          tabBarLabel: 'Done',
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
-        }}
-      />
-    </Tab.Navigator>
+    </Stack.Navigator>
   );
 }
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Settings"
-        screenOptions={{
-          headerStyle: {backgroundColor: '#633689'},
-          headerTintColor: '#fff',
-          headerTitleStyle: {fontWeight: 'bold'},
+      <Tab.Navigator
+        initialRouteName="Feed"
+        tabBarOptions={{
+          activeTintColor: '#42f44b',
         }}>
-        <Stack.Screen
-          name="TabStack"
-          component={TabStack}
-          options={{title: 'Tab Stack'}}
+        <Tab.Screen
+          name="HomeStack"
+          component={HomeStack}
+          options={{
+            tabBarLabel: '',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="compass" color={color} size={30} />
+            ),
+          }}
         />
-      </Stack.Navigator>
+        <Tab.Screen
+          name="Camera"
+          component={HomeStack}
+          options={{
+            tabBarLabel: '',
+            tabBarIcon: ({color, size}) => (
+              <Icons name="search" color={color} size={30} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="email"
+          component={HomeStack}
+          options={{
+            tabBarLabel: '',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="email" color={color} size={30} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="SearchStack"
+          component={HomeStack}
+          options={{
+            tabBarLabel: '',
+            tabBarIcon: ({color, size}) => (
+              <Icons name="user" color={color} size={30} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
 export default App;
